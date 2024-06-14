@@ -1,0 +1,12 @@
+<div *ngIf="librosAgrupados && librosAgrupados.length > 0" class="main-container">
+  <div class="contenedor-libros">
+    <div *ngFor="let libro of librosAgrupados[grupoActualIndex]">
+      <app-libros [libro]="libro"></app-libros>
+      <app-card-buttons [libro]="libro"></app-card-buttons>
+    </div>
+  </div>
+<div class="contenedor-button">
+  <button (click)="anteriorGrupo()" [disabled]="grupoActualIndex === 0">Anterior</button>
+  <button (click)="siguienteGrupo()" [disabled]="grupoActualIndex === librosAgrupados.length - 1">Siguiente</button>
+</div>
+</div>

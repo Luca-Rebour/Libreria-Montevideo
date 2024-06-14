@@ -1,0 +1,18 @@
+div{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.btn-secundario{
+    border: 1px solid black;
+}
+
+.btn-primary{
+    background-color: #111827;
+    border: #111827;
+}
+
+.btn-primary:active{
+    background-color: #213f81;
+}
