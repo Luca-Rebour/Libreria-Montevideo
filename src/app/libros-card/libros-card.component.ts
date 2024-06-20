@@ -19,7 +19,6 @@ export class LibrosCardComponent implements OnInit {
   ngOnInit(): void {
     this.librosService.getLibros().subscribe((data) => {
       this.libros = data.data;
-      console.log(this.libros);
       this.librosAgrupados = this.agruparLibros(data.data);
     });
   }
@@ -29,7 +28,6 @@ export class LibrosCardComponent implements OnInit {
   librosAgrupados:any;
 
   agruparLibros(libros: Libro[]): Libro[][] {
-    console.log(libros);
 
     const grupos: Libro[][] = [];
     let grupoActual: Libro[] = [];
@@ -42,7 +40,6 @@ export class LibrosCardComponent implements OnInit {
         grupoActual = [];
       }
     });
-    console.log('grupos ' + grupos);
     return grupos;
   }
   siguienteGrupo(): void {

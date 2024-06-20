@@ -6,6 +6,7 @@
     height: 100vh;
     justify-items: center;
     height: auto;
+    justify-content: center;
 }
 
 .contenedor-button{

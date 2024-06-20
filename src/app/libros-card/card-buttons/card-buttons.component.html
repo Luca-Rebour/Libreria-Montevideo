@@ -1,4 +1,4 @@
 <div *ngIf="libro">
-    <button id="{{libro.Title}} detalle" class="btn btn-primary">Ver detalle</button>
-    <button class="btn btn-secundario">Agregar a lista de lectura</button>
+    <button id="{{ libro.Title }} detalle" class="btn btn-primary">Ver detalle</button>
+    <button id="{{ libro.Title }}" class="btn btn-secundario" (click)="agragarListaLectura(libro)">Agregar a lista de lectura</button>
 </div>

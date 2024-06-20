@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 interface Villano {
   name: string;
@@ -31,14 +32,16 @@ export interface LibroResponse {
 export class LibrosService {
   URL: string = 'https://stephen-king-api.onrender.com/api/books';
   libros: Libro[] = [];
+  private _cargando = new BehaviorSubject<boolean>(true);
+  public readonly cargando$ = this._cargando.asObservable();
 
   constructor(private http: HttpClient) { }
 
-getLibros(): Observable<LibroResponse> {
+  getLibros(): Observable<LibroResponse> {
+    this._cargando.next(true); // Actualizar el estado de cargando a true
 
-  console.log(this.http.get<LibroResponse>(this.URL));
-  
-  return this.http.get<LibroResponse>(this.URL)
-  
-}
+    return this.http.get<LibroResponse>(this.URL).pipe(
+      finalize(() => this._cargando.next(false)) // Actualizar el estado de cargando a false al finalizar
+    );
+  }
 }
