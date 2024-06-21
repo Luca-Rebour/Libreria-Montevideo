@@ -1,0 +1,8 @@
+.portada {
+    height: 100%;
+    max-height: 250px;
+    background-color: rgb(210, 210, 210);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

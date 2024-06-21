@@ -1,0 +1,19 @@
+<div *ngIf="libro">
+    <h3> {{ libro.Title }} </h3>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="portada">Portada de libro</div>
+        </div>
+        <div class="col-md-8">
+            <p> <strong> Autor: </strong> Stephen King </p>
+            <p> <strong> Editorial: </strong> {{ libro.Publisher }} </p>
+            <p> <strong> Año: </strong> {{ libro.Year }} </p>
+            <p> <strong> Páginas: </strong> {{ libro.Pages }} </p>
+            <p> <strong> ISBN: </strong> {{ libro.ISBN }} </p>
+            <p> <strong> Descripción: </strong> {{ libro.Description }} </p>
+            <strong> Villians: </strong>
+            <ul>
+                <li *ngFor="let villano of libro.villains">{{ villano.name }}</li>
+            </ul>
+        </div>
+    </div>

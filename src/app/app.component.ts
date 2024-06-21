@@ -5,11 +5,13 @@ import { Event, NavigationEnd, NavigationError, NavigationStart, Router } from '
 import { LibrosService } from './libros.service';
 import { ListaLecturaComponent } from './lista-lectura/lista-lectura.component';
 import { Subject } from 'rxjs';
+import { InfoLibrosComponent } from './info-libros/info-libros.component';
+import { InfoLibroService } from './info-libro.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf, ListaLecturaComponent],
+  imports: [RouterOutlet, NgIf, ListaLecturaComponent, InfoLibrosComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -22,7 +24,7 @@ export class AppComponent {
 
   isLoading: boolean = true;
 
-  constructor(private librosService: LibrosService) { 
+  constructor(private librosService: LibrosService, private info: InfoLibroService) { 
     this.librosService.cargando$.subscribe((cargando: boolean) => {
       this.isLoading = cargando;
     });
@@ -32,6 +34,13 @@ export class AppComponent {
 
   emitEvent(data: any = null) {
     this.eventSource.next(data);
+  }
+
+  cerrarDetalle(){
+    this.info.cerrarInfo();
+    console.log('cerrar');
+    
+
   }
 
 }

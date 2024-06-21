@@ -31,6 +31,7 @@ export interface LibroResponse {
 })
 export class LibrosService {
   URL: string = 'https://stephen-king-api.onrender.com/api/books';
+  URL_LIBRO_DATA: string ='https://stephen-king-api.onrender.com/api/book'
   libros: Libro[] = [];
   private _cargando = new BehaviorSubject<boolean>(true);
   public readonly cargando$ = this._cargando.asObservable();
@@ -44,4 +45,9 @@ export class LibrosService {
       finalize(() => this._cargando.next(false)) // Actualizar el estado de cargando a false al finalizar
     );
   }
+
+  getInfoLibro(id: number): Observable<LibroResponse> {
+    return this.http.get<LibroResponse>(`${this.URL_LIBRO_DATA}/${id}`);
+  }
+
 }

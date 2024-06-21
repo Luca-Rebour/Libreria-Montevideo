@@ -1,4 +1,5 @@
 <div *ngIf="libro">
-    <button id="{{ libro.Title }} detalle" class="btn btn-primary">Ver detalle</button>
+    <button id="{{ libro.Title }} detalle" (click)="enviarIdLibro(libro.id)" class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver detalle</button>
     <button id="{{ libro.Title }}" class="btn btn-secundario" (click)="agragarListaLectura(libro)">Agregar a lista de lectura</button>
 </div>
+
